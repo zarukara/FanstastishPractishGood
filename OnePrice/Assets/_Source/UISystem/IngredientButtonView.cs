@@ -15,6 +15,8 @@ namespace UISystem
 
         public event Action<IngredientConfig> Clicked;
 
+        public void SetInteractable(bool value) => _button.interactable = value;
+
         public void Bind(IngredientConfig ingredient)
         {
             if (ingredient == null)
@@ -26,12 +28,12 @@ namespace UISystem
 
         private void OnEnable()
         {
-            _button.onClick.AddListener(HandleClick);
+            if (_button != null) _button.onClick.AddListener(HandleClick);
         }
 
         private void OnDisable()
         {
-            _button.onClick.RemoveListener(HandleClick);
+            if (_button != null) _button.onClick.RemoveListener(HandleClick);
         }
 
         private void HandleClick()

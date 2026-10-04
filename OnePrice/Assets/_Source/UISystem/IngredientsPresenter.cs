@@ -1,4 +1,5 @@
 using System;
+using CoreSystem;
 using PreparationSystem;
 using RecipeSystem;
 using UnityEngine;
@@ -9,14 +10,14 @@ namespace UISystem
     public sealed class IngredientsPresenter : IStartable, IDisposable
     {
         private readonly IngredientsPanelView _view;
-        private readonly DrinkPreparationService _preparationService;
+        private readonly GameSession _session;
 
         public IngredientsPresenter(
             IngredientsPanelView view,
-            DrinkPreparationService preparationService)
+            GameSession session)
         {
             _view = view;
-            _preparationService = preparationService;
+            _session = session;
         }
 
         public void Start()
@@ -31,8 +32,7 @@ namespace UISystem
 
         private void HandleIngredientSelected(IngredientConfig ingredient)
         {
-            if (_preparationService.TryAddIngredient(ingredient))
-                Debug.Log($"Добавлен ингредиент: {ingredient.DisplayName}");
+            _session.AddIngredient(ingredient);
         }
     }
 }

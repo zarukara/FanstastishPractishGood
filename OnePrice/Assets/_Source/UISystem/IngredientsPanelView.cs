@@ -15,6 +15,11 @@ namespace UISystem
 
         public event Action<IngredientConfig> IngredientSelected;
 
+        public void SetInteractable(bool value)
+        {
+            foreach (var button in _buttons) button.SetInteractable(value);
+        }
+
         private void Awake()
         {
             if (_recipeCatalog == null || _container == null || _buttonPrefab == null)

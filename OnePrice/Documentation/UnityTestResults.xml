@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="17" result="Passed" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-04 02:06:21Z" end-time="2026-10-04 02:06:23Z" duration="1,9508485">
+  <test-suite type="TestSuite" id="1000" name="OnePrice" fullname="OnePrice" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-10-04 02:06:21Z" end-time="2026-10-04 02:06:23Z" duration="1.950849" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1019" name="OnePrice.Tests.dll" fullname="D:/Git/FanstastishPractishGood/OnePrice/Library/ScriptAssemblies/OnePrice.Tests.dll" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-10-04 02:06:21Z" end-time="2026-10-04 02:06:23Z" duration="1.883856" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="840" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1020" name="Tests" fullname="Tests" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-10-04 02:06:21Z" end-time="2026-10-04 02:06:23Z" duration="1.880713" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1021" name="Editor" fullname="Tests.Editor" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-10-04 02:06:21Z" end-time="2026-10-04 02:06:23Z" duration="1.877187" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="CoffeeShopTests" fullname="Tests.Editor.CoffeeShopTests" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-10-04 02:06:21Z" end-time="2026-10-04 02:06:23Z" duration="1.873661" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1009" name="BrewingLocksIngredientsAndRemoveLastWorksWhileSelecting" fullname="Tests.Editor.CoffeeShopTests.BrewingLocksIngredientsAndRemoveLastWorksWhileSelecting" methodname="BrewingLocksIngredientsAndRemoveLastWorksWhileSelecting" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="970081133" result="Passed" start-time="2026-10-04 02:06:17Z" end-time="2026-10-04 02:06:17Z" duration="0.015156" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1003" name="CatalogMeetsAssignmentAndHasNoMissingIngredients" fullname="Tests.Editor.CoffeeShopTests.CatalogMeetsAssignmentAndHasNoMissingIngredients" methodname="CatalogMeetsAssignmentAndHasNoMissingIngredients" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="925999168" result="Passed" start-time="2026-10-04 02:06:17Z" end-time="2026-10-04 02:06:17Z" duration="0.002518" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1005" name="CorrectOrderCreditsExactlyOnceAndClearsDrink" fullname="Tests.Editor.CoffeeShopTests.CorrectOrderCreditsExactlyOnceAndClearsDrink" methodname="CorrectOrderCreditsExactlyOnceAndClearsDrink" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="1341801550" result="Passed" start-time="2026-10-04 02:06:17Z" end-time="2026-10-04 02:06:17Z" duration="0.005324" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1015" name="CorruptSaveAndNegativeBalanceRecoverSafely" fullname="Tests.Editor.CoffeeShopTests.CorruptSaveAndNegativeBalanceRecoverSafely" methodname="CorruptSaveAndNegativeBalanceRecoverSafely" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="1444609645" result="Passed" start-time="2026-10-04 02:06:17Z" end-time="2026-10-04 02:06:17Z" duration="0.000843" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1011" name="DayTimeoutAndZeroReputationBothLoseAndClearPreparation" fullname="Tests.Editor.CoffeeShopTests.DayTimeoutAndZeroReputationBothLoseAndClearPreparation" methodname="DayTimeoutAndZeroReputationBothLoseAndClearPreparation" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="1336561568" result="Passed" start-time="2026-10-04 02:06:17Z" end-time="2026-10-04 02:06:17Z" duration="0.001154" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1007" name="ExpirationDuringPreparationCannotLeakDrinkToNextCustomer" fullname="Tests.Editor.CoffeeShopTests.ExpirationDuringPreparationCannotLeakDrinkToNextCustomer" methodname="ExpirationDuringPreparationCannotLeakDrinkToNextCustomer" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="1964748976" result="Passed" start-time="2026-10-04 02:06:17Z" end-time="2026-10-04 02:06:17Z" duration="0.000417" asserts="0">
+              <properties />
+            </test-case>
+            <test-case id="1018" name="FinishedSceneButtonsAndPersistenceWorkInPlayMode" fullname="Tests.Editor.CoffeeShopTests.FinishedSceneButtonsAndPersistenceWorkInPlayMode" methodname="FinishedSceneButtonsAndPersistenceWorkInPlayMode" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="847552399" result="Passed" start-time="2026-10-04 02:06:17Z" end-time="2026-10-04 02:06:23Z" duration="5.704458" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="GoalWinsAndStartingAnotherDayKeepsWalletButResetsRevenue" fullname="Tests.Editor.CoffeeShopTests.GoalWinsAndStartingAnotherDayKeepsWalletButResetsRevenue" methodname="GoalWinsAndStartingAnotherDayKeepsWalletButResetsRevenue" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="1807501706" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.002382" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="MenuCancelsPreparedDrinkAndNeverAwardsItOnRestart" fullname="Tests.Editor.CoffeeShopTests.MenuCancelsPreparedDrinkAndNeverAwardsItOnRestart" methodname="MenuCancelsPreparedDrinkAndNeverAwardsItOnRestart" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="525367442" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.000242" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="PauseAndSettingsFreezeAllTimersAndRejectGameActions" fullname="Tests.Editor.CoffeeShopTests.PauseAndSettingsFreezeAllTimersAndRejectGameActions" methodname="PauseAndSettingsFreezeAllTimersAndRejectGameActions" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="961331970" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.000376" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1016" name="PlayerPrefsRoundTripUsesAnIsolatedKey" fullname="Tests.Editor.CoffeeShopTests.PlayerPrefsRoundTripUsesAnIsolatedKey" methodname="PlayerPrefsRoundTripUsesAnIsolatedKey" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="1085674153" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.001169" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="RecipeMultisetRejectsWrongMultiplicityAndAcceptsAnyOrder" fullname="Tests.Editor.CoffeeShopTests.RecipeMultisetRejectsWrongMultiplicityAndAcceptsAnyOrder" methodname="RecipeMultisetRejectsWrongMultiplicityAndAcceptsAnyOrder" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="579419979" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.000924" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1017" name="RepeatedStartDoesNotDuplicateExpirationSubscription" fullname="Tests.Editor.CoffeeShopTests.RepeatedStartDoesNotDuplicateExpirationSubscription" methodname="RepeatedStartDoesNotDuplicateExpirationSubscription" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="1114715736" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.000269" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="SaveRoundTripKeepsMoneyPurchasesRecordsAndSettings" fullname="Tests.Editor.CoffeeShopTests.SaveRoundTripKeepsMoneyPurchasesRecordsAndSettings" methodname="SaveRoundTripKeepsMoneyPurchasesRecordsAndSettings" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="1967272354" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.000644" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="StartsAtMenuAndRejectsActionsWithoutDay" fullname="Tests.Editor.CoffeeShopTests.StartsAtMenuAndRejectsActionsWithoutDay" methodname="StartsAtMenuAndRejectsActionsWithoutDay" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="1427187941" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.000260" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="UpgradePurchaseChecksFundsPhaseMaxLevelAndAppliesAllEffects" fullname="Tests.Editor.CoffeeShopTests.UpgradePurchaseChecksFundsPhaseMaxLevelAndAppliesAllEffects" methodname="UpgradePurchaseChecksFundsPhaseMaxLevelAndAppliesAllEffects" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="936118516" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.000725" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="WrongDrinkHasDistinctPenaltyAndNoReward" fullname="Tests.Editor.CoffeeShopTests.WrongDrinkHasDistinctPenaltyAndNoReward" methodname="WrongDrinkHasDistinctPenaltyAndNoReward" classname="Tests.Editor.CoffeeShopTests" runstate="Runnable" seed="2113223846" result="Passed" start-time="2026-10-04 02:06:23Z" end-time="2026-10-04 02:06:23Z" duration="0.000587" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/Eugen/AppData/LocalLow/DefaultCompany/OnePrice\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
