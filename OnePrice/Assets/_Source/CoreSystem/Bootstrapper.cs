@@ -8,6 +8,7 @@ using UpgradeSystem;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+
 namespace CoreSystem
 {
     [DisallowMultipleComponent]
@@ -16,6 +17,7 @@ namespace CoreSystem
         [SerializeField] private RecipeCatalog _recipeCatalog;
         [SerializeField] private DayConfig _dayConfig;
         [SerializeField] private UpgradeCatalog _upgradeCatalog;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             if (_recipeCatalog == null || _dayConfig == null || _upgradeCatalog == null)

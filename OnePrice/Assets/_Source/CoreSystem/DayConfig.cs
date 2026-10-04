@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace CoreSystem
 {
     [CreateAssetMenu(fileName = "DayConfig", menuName = "Coffee Shop/Day")]
@@ -10,6 +11,7 @@ namespace CoreSystem
         [SerializeField, Min(1)] private int _wrongDrinkPenalty = 25;
         [SerializeField, Min(1)] private int _expiredOrderPenalty = 20;
         [SerializeField, Min(.1f)] private float _preparationSeconds = 3.5f;
+        
         public float DurationSeconds => Mathf.Max(10, _durationSeconds);
         public int RevenueGoal => Mathf.Max(1, _revenueGoal);
         public int StartingReputation => Mathf.Max(1, _startingReputation);

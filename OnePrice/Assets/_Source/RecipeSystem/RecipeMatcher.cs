@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 namespace RecipeSystem
 {
-    /// <summary>Compares ingredients as a multiset: their order does not matter.</summary>
     public sealed class RecipeMatcher
     {
         public bool Matches(RecipeConfig recipe, IReadOnlyList<IngredientConfig> selected)

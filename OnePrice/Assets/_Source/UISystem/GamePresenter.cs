@@ -13,6 +13,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using VContainer.Unity;
 namespace UISystem
+
+
+
 {
     public sealed class GamePresenter : IStartable, ITickable, IDisposable
     {
@@ -30,6 +33,7 @@ namespace UISystem
         private readonly List<(UpgradeCardView view, UpgradeConfig config)> _cards = new();
         private readonly StringBuilder _text = new();
         private bool _started;
+        
         public GamePresenter(GameView view, IngredientsPanelView ingredients, GameSession session,
             GameStateMachine state, OrderService orders, DrinkPreparationService preparation,
             SaveService save, SettingsService settings, UpgradeService upgrades, UpgradeCatalog catalog)
@@ -38,6 +42,7 @@ namespace UISystem
             _orders = orders; _preparation = preparation; _save = save; _settings = settings;
             _upgrades = upgrades; _catalog = catalog;
         }
+        
         public void Start()
         {
             if (_started) return;
@@ -66,6 +71,7 @@ namespace UISystem
             Bind(_view.FailureMenu, _session.ReturnToMenu);
             Bind(_view.UpgradesPlay, _session.StartDay);
             Bind(_view.UpgradesMenu, _session.ReturnToMenu);
+            
             foreach (var config in _catalog.Upgrades)
             {
                 var card = UnityEngine.Object.Instantiate(_view.UpgradePrefab, _view.UpgradeContainer);
@@ -74,10 +80,12 @@ namespace UISystem
                 Bind(card.Buy, () => _upgrades.TryBuy(config));
                 _cards.Add((card, config));
             }
+            
             _state.Changed += OnPhaseChanged;
             _session.OrderResolved += _view.PlayResult;
             OnPhaseChanged(_state.Current);
         }
+        
         public void Tick()
         {
             if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
@@ -88,21 +96,27 @@ namespace UISystem
             }
             Refresh();
         }
+        
         private void Bind(Button button, Action action)
         {
             UnityAction callback = () => { action(); _view.PlayClick(); Refresh(); };
             button.onClick.AddListener(callback);
             _bindings.Add((button, callback));
         }
+        
         private void OnPhaseChanged(GamePhase phase) { _view.Show(phase); Refresh(); }
+        
         private void Refresh()
         {
             int seconds = Mathf.CeilToInt(_session.RemainingSeconds);
+            
             _view.Hud.text = $"СМЕНА  {seconds / 60:00}:{seconds % 60:00}    ВЫРУЧКА  {_session.Revenue}/{_session.RevenueGoal}    КОШЕЛЁК  {_save.Wallet}    РЕПУТАЦИЯ  {_session.Reputation}    ЗАКАЗЫ  {_session.CompletedOrders}";
             _view.Status.text = _session.Status;
             _view.Goal.text = $"Соберите {_session.RevenueGoal} монет за смену.\nСоставьте напиток по чеку → приготовьте → выдайте.\nОшибка и опоздание снижают репутацию.";
             _view.MenuStats.text = $"В кошельке: {_save.Wallet}     •     Рекорд выручки: {_save.BestRevenue}     •     Заказов: {_save.BestOrders}";
+            
             string result = $"{_session.Status}\n\nВыручка  {_session.Revenue}     /     Заказов  {_session.CompletedOrders}\nКошелёк  {_save.Wallet}     /     Рекорд выручки  {_save.BestRevenue}\n\nЗаработанные монеты уже сохранены.";
+            
             _view.SuccessStats.text = result;
             _view.FailureStats.text = result;
             _view.Wallet.text = $"КОШЕЛЁК  {_save.Wallet} монет   •   Покупки сохраняются между запусками";
@@ -115,19 +129,24 @@ namespace UISystem
             _view.Prepare.interactable = _session.CanPrepare;
             _view.Serve.interactable = _session.CanServe;
             _text.Clear();
+            
             foreach (var ingredient in _preparation.Ingredients)
             {
                 if (_text.Length > 0) _text.Append(" + ");
                 _text.Append(ingredient.DisplayName);
             }
+            
             _view.Composition.text = _text.Length == 0 ? "Состав: пока пусто" : "Состав: " + _text;
+            
             bool brewing = _preparation.Phase == PreparationPhase.Preparing;
             bool ready = _preparation.Phase == PreparationPhase.Ready;
+            
             _view.Preparation.text = brewing ? $"Готовим… {_preparation.RemainingSeconds:0.0} с" :
                 ready ? "Напиток готов. Выдайте гостю!" : "1  Состав   →   2  Приготовить   →   3  Выдать";
             _view.BrewProgress.fillAmount = ready ? 1 : brewing ? 1 - _preparation.RemainingSeconds / _session.PreparationDuration : 0;
             _view.Visitor.SetActive(_orders.CurrentOrder != null && _state.Current != GamePhase.MainMenu);
             _view.Cup.SetActive(_preparation.Ingredients.Count > 0);
+            
             if (_orders.CurrentOrder != null)
             {
                 _text.Clear();
@@ -136,6 +155,7 @@ namespace UISystem
                 int reward = Mathf.RoundToInt(_orders.CurrentOrder.Recipe.Reward * _upgrades.Multiplier(UpgradeEffect.OrderReward));
                 _view.TicketDetails.text = _text + $"\nНаграда: {reward} монет";
             }
+            
             foreach (var (card, config) in _cards)
             {
                 int level = _upgrades.Level(config);
@@ -144,6 +164,7 @@ namespace UISystem
                 card.Buy.interactable = _upgrades.CanBuy(config);
             }
         }
+        
         public void Dispose()
         {
             _state.Changed -= OnPhaseChanged;

@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace SaveSystem
 {
     public sealed class PlayerPrefsSaveStore : ISaveStore

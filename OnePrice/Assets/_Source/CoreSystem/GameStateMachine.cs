@@ -2,7 +2,6 @@ using System;
 
 namespace CoreSystem
 {
-    /// <summary>Owns the current screen/game phase and announces transitions.</summary>
     public sealed class GameStateMachine
     {
         private GamePhase _returnFromSettings;
@@ -49,12 +48,15 @@ namespace CoreSystem
         }
 
         public void Succeed() => Set(GamePhase.DaySuccess);
+        
         public void Fail() => Set(GamePhase.DayFailure);
+        
         public void OpenUpgrades()
         {
             if (Current == GamePhase.MainMenu || Current == GamePhase.DaySuccess || Current == GamePhase.DayFailure)
                 Set(GamePhase.Upgrades);
         }
+        
         public void ReturnToMenu() => Set(GamePhase.MainMenu);
 
         private void Set(GamePhase next)

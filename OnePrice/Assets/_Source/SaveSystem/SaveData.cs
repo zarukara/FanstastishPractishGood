@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 namespace SaveSystem
+
 {
     [Serializable] public sealed class UpgradeLevel { public string id; public int level; }
+    
     [Serializable]
     public sealed class SaveData
     {

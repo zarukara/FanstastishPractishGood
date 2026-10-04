@@ -2,9 +2,9 @@ using CoreSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace UISystem
 {
-    // Scene references and presentation only. Game rules live in the injected services.
     public sealed class GameView : MonoBehaviour
     {
         public GameObject Gameplay, MainMenu, Pause, Settings, Success, Failure, Upgrades;
@@ -21,6 +21,7 @@ namespace UISystem
         public UpgradeCardView UpgradePrefab;
         public AudioSource Audio;
         public AudioClip ClickSound, SuccessSound, FailureSound;
+        
         public void Show(GamePhase phase)
         {
             Gameplay.SetActive(phase == GamePhase.Playing || phase == GamePhase.Paused);
@@ -31,7 +32,9 @@ namespace UISystem
             Failure.SetActive(phase == GamePhase.DayFailure);
             Upgrades.SetActive(phase == GamePhase.Upgrades);
         }
+        
         public void PlayClick() { if (Audio && ClickSound) Audio.PlayOneShot(ClickSound); }
+        
         public void PlayResult(bool success)
         {
             var clip = success ? SuccessSound : FailureSound;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace UpgradeSystem
 {
     [CreateAssetMenu(fileName = "UpgradeCatalog", menuName = "Coffee Shop/Upgrade Catalog")]

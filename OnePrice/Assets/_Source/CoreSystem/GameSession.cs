@@ -6,6 +6,7 @@ using SaveSystem;
 using UpgradeSystem;
 using UnityEngine;
 using VContainer.Unity;
+
 namespace CoreSystem
 {
     public sealed class GameSession : IStartable, ITickable, IDisposable
@@ -17,34 +18,46 @@ namespace CoreSystem
         private readonly DayConfig _config;
         private readonly UpgradeService _upgrades;
         private readonly SaveService _save;
+        
         private bool _started;
         public event Action<bool> OrderResolved;
         public float RemainingSeconds { get; private set; }
         public int Revenue { get; private set; }
         public int Reputation { get; private set; }
         public int CompletedOrders { get; private set; }
+        
         public string Status { get; private set; } = "Добро пожаловать в One Price";
+        
         public int RevenueGoal => _config.RevenueGoal;
+        
         public float PreparationDuration => _config.PreparationSeconds / _upgrades.Multiplier(UpgradeEffect.PreparationSpeed);
+        
         public bool CanSelect => _state.Current == GamePhase.Playing && _orders.CurrentOrder != null &&
             _preparation.Phase == PreparationPhase.Selecting;
+        
         public bool CanPrepare => CanSelect && _preparation.Ingredients.Count > 0;
+        
         public bool CanServe => _state.Current == GamePhase.Playing && _orders.CurrentOrder != null &&
             !_orders.CurrentOrder.IsExpired && _preparation.Phase == PreparationPhase.Ready;
+        
         public GameSession(GameStateMachine state, OrderService orders, DrinkPreparationService preparation,
             RecipeMatcher matcher, DayConfig config, UpgradeService upgrades, SaveService save)
         {
             _state = state; _orders = orders; _preparation = preparation; _matcher = matcher;
             _config = config; _upgrades = upgrades; _save = save;
         }
+        
         public void Start()
         {
             if (_started) return;
             _started = true;
             _orders.OrderExpired += OnOrderExpired;
         }
+        
         public void Dispose() { _orders.OrderExpired -= OnOrderExpired; _started = false; }
+        
         public void Tick() => Advance(Time.deltaTime);
+        
         public void Advance(float deltaSeconds)
         {
             if (deltaSeconds < 0 || float.IsNaN(deltaSeconds) || float.IsInfinity(deltaSeconds))
@@ -58,6 +71,7 @@ namespace CoreSystem
             _preparation.Tick(elapsed);
             if (_orders.CurrentOrder == null) StartNextOrder();
         }
+        
         public void StartDay()
         {
             if (_state.Current == GamePhase.Playing || _state.Current == GamePhase.Paused ||
@@ -69,14 +83,18 @@ namespace CoreSystem
             _state.StartDay();
             StartNextOrder();
         }
+        
         public bool AddIngredient(IngredientConfig ingredient) => CanSelect && _preparation.TryAddIngredient(ingredient);
+        
         public bool RemoveLastIngredient() => CanSelect && _preparation.TryRemoveLastIngredient();
+        
         public bool Prepare()
         {
             if (!CanPrepare || !_preparation.TryStart(PreparationDuration)) return false;
             Status = "Готовим напиток. Состав зафиксирован.";
             return true;
         }
+        
         public bool Serve()
         {
             if (!CanServe || !_orders.TryTakeCurrentOrder(out Order order)) return false;
@@ -100,8 +118,11 @@ namespace CoreSystem
             // Next order arrives next tick, so repeated clicks cannot consume it.
             return true;
         }
+        
         public void ReturnToMenu() { ClearOrder(); _state.ReturnToMenu(); }
+        
         private void StartNextOrder() => _orders.StartNextOrder(_upgrades.Multiplier(UpgradeEffect.CustomerPatience));
+        
         private void OnOrderExpired(Order order)
         {
             _preparation.Reset();
@@ -110,11 +131,13 @@ namespace CoreSystem
             OrderResolved?.Invoke(false);
             if (Reputation <= 0) Finish(false, "Репутация исчерпана. Гости больше не приходят.");
         }
+        
         private void Finish(bool success, string message)
         {
             ClearOrder(); Status = message;
             if (success) _state.Succeed(); else _state.Fail();
         }
+        
         private void ClearOrder() { _preparation.Reset(); _orders.Clear(); }
     }
 }
